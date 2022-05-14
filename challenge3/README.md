@@ -9,7 +9,6 @@ key = x/y/z
 value = a
 ```
 
-```
 **Solution to above chanllenge is as below:**
 
 We are using JS editor to validate the output.
