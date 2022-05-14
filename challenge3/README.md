@@ -15,9 +15,11 @@ We are using JS editor to validate the output.
 
 **Pre-requisite to run this script in Linux Instance**
 
+```
 curl -sL https://rpm.nodesource.com/setup_14.x | bash -
 yum -y install nodejs
 node object.js
+```
 
 **Reference:**
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
