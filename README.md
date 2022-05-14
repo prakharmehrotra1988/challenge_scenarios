@@ -7,8 +7,7 @@ A 3-tier environment is a common setup. Use a tool of your choosing/familiarity 
 
 ## Challenge 2
 
-We need to write code that will query the meta data of an instance within AWS and provide a json formatted output.
-  
+Need to write a code that will fetch the metadata of an instance within AWS and provide a JSON formatted output.   
 
 ## Challenge 3
 
