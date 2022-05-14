@@ -1,18 +1,27 @@
 ## Problem statement 
-- Need to build 3-tier environment in AWS using Infrastructure as a Code. 
+- Need to build 3-tier environment in AWS using Infrastructure as a Code.
+We will be using Terraform to create the entire stack to complete this challenge
 
 ## What is Terraform ?
 - Terraform is an open-source infrastructure as a code (IAC) tool that allows to create, manage & deploy the production-ready environment. Terraform codifies cloud APIs into declarative configuration files. Terraform can manage both existing service providers and custom in-house solutions
 
-![1](https://github.com/prakharmehrotra1988/challenge_scenarios/blob/master/challenge1/1.png)
-
 Reference link: https://www.terraform.io/
+
+## Architecture Design for this Challenge:
+
+![1](https://github.com/prakharmehrotra1988/challenge_scenarios/blob/master/challenge1/1.png)
 
 ### Prerequisites:
 
-* Basic knowledge of AWS & Terraform
+* Basic knowledge of AWS Services & Terraform code
 * AWS account
 * AWS Access & Secret Key
+* Must have 1 S3 bucket with proper IAM policy to maintain state.tf file.
+
+Note: Below steps have very generic naming conventions for the sake of this challenge. In real time should add more meaningful tags.This will help to get better clarity if we apply filters(Tags) to filter out the resources.
+
+Reference link: https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+                https://www.toptal.com/devops/terraform-aws-cloud-iac
 
 **Step 1:- Create a file for the VPC**
 
@@ -399,7 +408,7 @@ So, now our entire code is ready. We need to run the below steps to create infra
 * Terraform will create below resources
 
   * VPC
-  * Application Load Balancer
+  * Application Load Balancers
   * Public & Private Subnets
   * EC2 instances
   * RDS instance
@@ -409,3 +418,5 @@ So, now our entire code is ready. We need to run the below steps to create infra
   * Route Table
 
 Once the resource creation finishes you can get the DNS of a load balancer and paste it into the browser and you can see load balancer will send the request to two instances. You can use R53 if you have your domain to test it.
+
+Note: In real time we should always have terraform modules pushed in common repositories. This will help to re-use the same code if we have multiple environments having simialar services.
