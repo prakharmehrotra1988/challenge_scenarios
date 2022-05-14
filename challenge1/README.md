@@ -6,6 +6,8 @@
 
 ![1](https://github.com/prakharmehrotra1988/challenge_scenarios/blob/master/challenge1/1.png)
 
+Reference link: https://www.terraform.io/
+
 ### Prerequisites:
 
 * Basic knowledge of AWS & Terraform
@@ -141,35 +143,35 @@
   ```
   # Creating 1st EC2 instance in Public Subnet
   resource "aws_instance" "demoinstance" {
-    ami                         = "ami-087c17d1fe0178315"
+    ami                         = "ami-087c17d1fe0178"
     instance_type               = "t2.micro"
     count                       = 1
-    key_name                    = "tests"
+    key_name                    = "keyssh"
     vpc_security_group_ids      = ["${aws_security_group.demosg.id}"]
     subnet_id                   = "${aws_subnet.demoinstance.id}"
     associate_public_ip_address = true
     user_data                   = "${file("data.sh")}"
   tags = {
-    Name = "My Public Instance"
+    Name = "Application-1"
   }
   }
   # Creating 2nd EC2 instance in Public Subnet
   resource "aws_instance" "demoinstance1" {
-    ami                         = "ami-087c17d1fe0178315"
+    ami                         = "ami-087c17d1fe0115"
     instance_type               = "t2.micro"
     count                       = 1
-    key_name                    = "tests"
+    key_name                    = "keyssh"
     vpc_security_group_ids      = ["${aws_security_group.demosg.id}"]
     subnet_id                   = "${aws_subnet.demoinstance.id}"
     associate_public_ip_address = true
     user_data                   = "${file("data.sh")}"
   tags = {
-    Name = "My Public Instance 2"
+    Name = "Application-2"
   }
   }
   ```
 
-* I have used the userdata to configure the EC2 instance, I will discuss data.sh file later in the article
+* I have used the userdata to configure the EC2 instance. Also pre-baked custom AMI's can also be used/
 
 **Step 6:- Create a file for Security Group for the FrontEnd tier**
 
@@ -225,7 +227,7 @@
   # Create Database Security Group
   resource "aws_security_group" "database-sg" {
     name        = "Database SG"
-    description = "Allow inbound traffic from application layer"
+    description = "Allow inbound traffic from public subnet"
     vpc_id      = aws_vpc.demovpc.id
   ingress {
     description     = "Allow traffic from application layer"
@@ -233,12 +235,6 @@
     to_port         = 3306
     protocol        = "tcp"
     security_groups = [aws_security_group.demosg.id]
-  }
-  egress {
-    from_port   = 32768
-    to_port     = 65535
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
     Name = "Database SG"
@@ -307,7 +303,7 @@
     name       = "main"
     subnet_ids = [aws_subnet.database-subnet-1.id, aws_subnet.database-subnet-1.id]
   tags = {
-    Name = "My DB subnet group"
+    Name = "My-DB-subnet-group"
   }
   }
   resource "aws_db_instance" "default" {
@@ -393,9 +389,9 @@
 
 So, now our entire code is ready. We need to run the below steps to create infrastructure.
 
-* terraform init is to initialize the working directory and downloading plugins of the provider
-* terraform plan is to create the execution plan for our code
-* terraform apply is to create the actual infrastructure. It will ask you to provide the Access Key and Secret Key in order to create the infrastructure. So, instead of hardcoding the Access Key and Secret Key, it is better to apply at the run time.
+* terraform init - To initialize the working directory and downloading plugins of the provider
+* terraform plan - To create the execution plan for our code
+* terraform apply - To create the actual infrastructure. It will ask you to provide the Access Key and Secret Key in order to create the infrastructure. So, instead of hardcoding the Access Key and Secret Key, it is better to apply at the run time.
 
 
 **Step 13:- Verify the resources**
@@ -412,6 +408,4 @@ So, now our entire code is ready. We need to run the below steps to create infra
   * Security Groups for Web & RDS instances
   * Route Table
 
-Once the resource creation finishes you can get the DNS of a load balancer and paste it into the browser and you can see load balancer will send the request to two instances.
-
-That’s it now, you have learned how to create various resources in AWS using Terraform.
+Once the resource creation finishes you can get the DNS of a load balancer and paste it into the browser and you can see load balancer will send the request to two instances. You can use R53 if you have your domain to test it.
