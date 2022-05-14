@@ -23,6 +23,6 @@ node object.js
 ```
 
 **Reference:**
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
-https://javascript.info/keys-values-entries
-https://masteringjs.io/tutorials/fundamentals/foreach-object
+-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
+-https://javascript.info/keys-values-entries
+-https://masteringjs.io/tutorials/fundamentals/foreach-object
