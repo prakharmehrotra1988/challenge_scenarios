@@ -21,8 +21,6 @@ curl -sL https://rpm.nodesource.com/setup_14.x | bash -
 yum -y install nodejs
 node object.js
 ```
-
-**Reference:**
--https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
--https://javascript.info/keys-values-entries
--https://masteringjs.io/tutorials/fundamentals/foreach-object
+Reference link: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
+                https://javascript.info/keys-values-entries
+                https://masteringjs.io/tutorials/fundamentals/foreach-object
