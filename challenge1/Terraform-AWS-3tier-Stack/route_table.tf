@@ -1,4 +1,5 @@
-# Creating Route Table
+# Creating Route Table for subnets 
+
 resource "aws_route_table" "route" {
     vpc_id = "${aws_vpc.demovpc.id}"
 
@@ -12,7 +13,7 @@ resource "aws_route_table" "route" {
     }
 }
 
-# Associating Route Table
+# Associating Route Table and map it to Subnets accordingly (Should be done carefully else security can be breached)
 resource "aws_route_table_association" "rt1" {
     subnet_id = "${aws_subnet.demosubnet.id}"
     route_table_id = "${aws_route_table.route.id}"

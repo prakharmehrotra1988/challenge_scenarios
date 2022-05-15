@@ -1,4 +1,6 @@
-# Creating RDS Instance
+# Creating RDS Instance and put it in Private Subnet so it cannot be accessed from Internet
+# Read Replicas should be considered while setting up PROD environment
+
 resource "aws_db_subnet_group" "default" {
   name       = "main"
   subnet_ids = [aws_subnet.database-subnet-1.id, aws_subnet.database-subnet-1.id]

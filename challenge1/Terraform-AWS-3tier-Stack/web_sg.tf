@@ -1,9 +1,10 @@
-# Creating Security Group 
+# Creating Security Group and they are attached to Instance level
+
 resource "aws_security_group" "demosg" {
   vpc_id = "${aws_vpc.demovpc.id}"
 
   # Inbound Rules
-  # HTTP access from anywhere
+  # HTTP access from outside world
   ingress {
     from_port   = 80
     to_port     = 80
@@ -11,7 +12,7 @@ resource "aws_security_group" "demosg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # HTTPS access from anywhere
+  # HTTPS access from outside world
   ingress {
     from_port   = 443
     to_port     = 443
@@ -19,7 +20,7 @@ resource "aws_security_group" "demosg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # SSH access from anywhere
+  # SSH access from outside world
   ingress {
     from_port   = 22
     to_port     = 22
@@ -28,7 +29,7 @@ resource "aws_security_group" "demosg" {
   }
 
   # Outbound Rules
-  # Internet access to anywhere
+  # Internet access to outside world
   egress {
     from_port   = 0
     to_port     = 0
@@ -37,6 +38,6 @@ resource "aws_security_group" "demosg" {
   }
 
   tags = {
-    Name = "Web SG"
+    Name = "Web-SG"
   }
 }

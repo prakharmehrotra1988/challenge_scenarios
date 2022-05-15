@@ -1,4 +1,3 @@
-# Create Database Security Group
 resource "aws_security_group" "database-sg" {
   name        = "Database SG"
   description = "Allow inbound traffic from application layer"

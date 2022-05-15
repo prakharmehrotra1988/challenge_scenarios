@@ -1,3 +1,6 @@
+# Note: Subnets should be created keeping type of Instances and exposure to Internet.
+# Naming conventions are key here. I have given friendly names here for demo purpose.
+
 # Creating 1st web subnet 
 resource "aws_subnet" "public-subnet-1" {
   vpc_id                  = "${aws_vpc.demovpc.id}"

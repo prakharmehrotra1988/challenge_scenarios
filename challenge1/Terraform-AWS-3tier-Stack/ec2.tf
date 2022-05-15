@@ -1,4 +1,6 @@
-# Creating 1st EC2 instance in Public Subnet
+# Creating  EC2 instances in Public Subnet
+# Please use your custom build AMI's in line no. 5 and 20
+
 resource "aws_instance" "demoinstance" {
   ami                         = "ami-087c17d1fe0178315"
   instance_type               = "t2.micro"
@@ -14,7 +16,6 @@ resource "aws_instance" "demoinstance" {
   }
 }
 
-# Creating 2nd EC2 instance in Public Subnet
 resource "aws_instance" "demoinstance1" {
   ami                         = "ami-087c17d1fe0178315"
   instance_type               = "t2.micro"
