@@ -11,10 +11,10 @@
 - Install Python 3 and git on your instance
     - `yum install python3 git -y`
 - Clone this repository
-  - `git clone <REPOS_NAME>`
+  - `git clone https://github.com/prakharmehrotra1988/challenge_scenarios.git`
 
 - Open the repository on your instance
-  - `cd CHALLENGE2`
+  - `cd challenge2`
 
 ## How to run the below scripts ?
 
