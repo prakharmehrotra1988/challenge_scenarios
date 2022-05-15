@@ -11,8 +11,8 @@ def expand_urls(url, array):
         r = requests.get(full_url)
         text = r.text
 
-        if items[-1] == "/":
-            values = r.text.splitlines()
+        if items[-1] == "/":     # Python also allows you to index from the end of the list using a negative number, where [-1] returns the last element
+            values = r.text.splitlines()   # splitlines() method splits a string into a list. 
             output[items[:-1]] = expand_urls(full_url, values)
 
         elif is_json(text):
